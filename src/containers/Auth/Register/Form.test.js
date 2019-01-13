@@ -7,10 +7,12 @@ afterEach(cleanup)
 
 const setup = WrapperComponent => {
   const onSubmit = jest.fn()
-  const { debug, getByTestId, queryByTestId, container } = render(<WrapperComponent onSubmit={onSubmit} />)
+  const { debug, getByTestId, getByLabelText, queryByTestId, container } = render(
+    <WrapperComponent onSubmit={onSubmit} />,
+  )
   const form = getByTestId('form')
-  const emailAddress = getByTestId('emailAddress')
-  const button = getByTestId('button')
+  const emailAddress = getByLabelText(/email address/i)
+  const button = getByLabelText(/register me/i)
   const emailAddressError = queryByTestId('emailAddressError')
 
   return {

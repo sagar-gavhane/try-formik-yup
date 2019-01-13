@@ -44,7 +44,7 @@ export const RegisterForm = ({ emailAddress, mobileNumber, password, sbCode, agr
         const { values, errors, isValid, touched, isSubmitting } = args
         return (
           <Fragment>
-            <Form data-testid="form">
+            <Form data-testid="form" className="col-12">
               {/* emailAddress */}
               <div className="form-group">
                 <label htmlFor="emailAddress">Email Address</label>

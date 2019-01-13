@@ -5,7 +5,7 @@ class Register extends Component {
   render() {
     return (
       <Fragment>
-        <div className="col-4 offset-4 my-5">
+        <div className="col-10 col-md-4 offset-1 offset-md-4 my-5">
           <RegisterForm onSubmit={() => {}} />
         </div>
       </Fragment>
