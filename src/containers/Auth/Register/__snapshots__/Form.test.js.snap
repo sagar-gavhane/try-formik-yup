@@ -3,6 +3,7 @@
 exports[`<RegisterForm Testing /> should be change input 1`] = `
 <div>
   <form
+    class="col-12"
     data-testid="form"
   >
     <div

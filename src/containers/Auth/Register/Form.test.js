@@ -12,7 +12,7 @@ const setup = WrapperComponent => {
   )
   const form = getByTestId('form')
   const emailAddress = getByLabelText(/email address/i)
-  const button = getByLabelText(/register me/i)
+  const button = getByTestId('button')
   const emailAddressError = queryByTestId('emailAddressError')
 
   return {
