@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RegisterForm Testing /> should be change input 1`] = `
+<div>
+  <form
+    data-testid="form"
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        for="emailAddress"
+      >
+        Email Address
+      </label>
+      <input
+        class="form-control"
+        data-testid="emailAddress"
+        id="emailAddress"
+        name="emailAddress"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="mobileNumber"
+      >
+        Mobile Number
+      </label>
+      <input
+        class="form-control"
+        name="mobileNumber"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        class="form-control"
+        name="password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="sbCode"
+      >
+        SB Code
+      </label>
+      <input
+        class="form-control"
+        name="sbCode"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="form-check"
+    >
+      <input
+        class="form-check-input"
+        id="agree"
+        name="agree"
+        type="checkbox"
+        value=""
+      />
+      <label
+        class="form-check-label"
+        for="agree"
+      >
+        I agree
+      </label>
+    </div>
+    <div
+      class="form-group my-2"
+    >
+      <button
+        class="btn btn-primary btn-block p-2"
+        data-testid="button"
+        disabled=""
+        type="submit"
+      >
+        Register Me
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -1,3 +1,9 @@
+import React, { Fragment } from 'react'
+import { Formik, Field, ErrorMessage, Form } from 'formik'
+
+import applyInputClasses from '../../../utils/applyInputClasses'
+import CustomErrorMessage from '../../../components/CustomErrorMessage'
+
 import * as yup from 'yup'
 
 export const getValidationSchema = yup.object().shape({
@@ -17,3 +23,88 @@ export const getValidationSchema = yup.object().shape({
   sbCode: yup.string().min(6, 'sb code should be 6 character long.'),
   agree: yup.boolean().required('Please agree our terms and conditions'),
 })
+
+export const RegisterForm = ({ emailAddress, mobileNumber, password, sbCode, agree, onSubmit }) => {
+  return (
+    <Formik
+      initialValues={{
+        emailAddress: emailAddress || '',
+        mobileNumber: mobileNumber || '',
+        password: password || '',
+        sbCode: sbCode || '',
+        agree: agree || false,
+      }}
+      onSubmit={(values, actions) => {
+        onSubmit()
+        setTimeout(() => actions.setSubmitting(false), 3 * 1000)
+      }}
+      validationSchema={getValidationSchema}
+    >
+      {args => {
+        const { values, errors, isValid, touched, isSubmitting } = args
+        return (
+          <Fragment>
+            <Form data-testid="form">
+              {/* emailAddress */}
+              <div className="form-group">
+                <label htmlFor="emailAddress">Email Address</label>
+                <Field
+                  id="emailAddress"
+                  className={applyInputClasses(errors.emailAddress && touched.emailAddress)}
+                  type="email"
+                  name="emailAddress"
+                  data-testid="emailAddress"
+                />
+                <ErrorMessage name="emailAddress" data-testid="emailAddressError" component={CustomErrorMessage} />
+              </div>
+              {/* mobileNumber */}
+              <div className="form-group">
+                <label htmlFor="mobileNumber">Mobile Number</label>
+                <Field
+                  className={applyInputClasses(errors.mobileNumber && touched.mobileNumber)}
+                  type="number"
+                  name="mobileNumber"
+                />
+                <ErrorMessage name="mobileNumber" data-testid="mobileNumberError" component={CustomErrorMessage} />
+              </div>
+              {/* password */}
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <Field
+                  className={applyInputClasses(errors.password && touched.password)}
+                  type="password"
+                  name="password"
+                />
+                <ErrorMessage name="password" data-testid="passwordError" component={CustomErrorMessage} />
+              </div>
+              {/* sbCode */}
+              <div className="form-group">
+                <label htmlFor="sbCode">SB Code</label>
+                <Field className={applyInputClasses(errors.sbCode && touched.sbCode)} type="text" name="sbCode" />
+                <ErrorMessage name="sbCode" data-testid="sbCodeError" component={CustomErrorMessage} />
+              </div>
+              {/* I agree */}
+              <div className="form-check">
+                <Field id="agree" type="checkbox" className="form-check-input" name="agree" />
+                <label htmlFor="agree" className="form-check-label">
+                  I agree
+                </label>
+                <ErrorMessage name="agree" data-testid="agreeError" component={CustomErrorMessage} />
+              </div>
+              <div className="form-group my-2">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block p-2"
+                  disabled={!isValid || !values.agree}
+                  data-testid="button"
+                >
+                  {isSubmitting ? 'Loading' : 'Register Me'}
+                </button>
+              </div>
+            </Form>
+          </Fragment>
+        )
+      }}
+    </Formik>
+  )
+}
